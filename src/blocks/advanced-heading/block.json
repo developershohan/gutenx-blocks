@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gutenx-blocks/advanced-heading",
+	"version": "1.0.0",
+	"title": "Advanced Heading",
+	"category": "gutenx-blocks",
+	"icon": "heading",
+	"description": "Advanced heading block with full typography controls and H1–H6 tag selector.",
+	"keywords": [ "heading", "title", "typography", "text" ],
+	"supports": {
+		"html": false,
+		"className": true,
+		"anchor": true
+	},
+	"textdomain": "gutenx-blocks",
+	"editorScript": "file:../../../build/blocks/advanced-heading/index.js",
+	"style": "file:../../../build/blocks/advanced-heading/style-index.css",
+	"attributes": {
+		"content": { "type": "string", "default": "Your Heading Here" },
+		"level": { "type": "number", "default": 2 },
+		"textColor": { "type": "string", "default": "#1A1A2E" },
+		"fontSize": { "type": "string", "default": "32px" },
+		"fontWeight": { "type": "string", "default": "700" },
+		"lineHeight": { "type": "string", "default": "1.3" },
+		"letterSpacing": { "type": "string", "default": "0px" },
+		"fontFamily": { "type": "string", "default": "system-ui, sans-serif" },
+		"customFontFamily": { "type": "string", "default": "" },
+		"textTransform": { "type": "string", "default": "none" },
+		"textAlign": { "type": "string", "default": "left" },
+		"marginTop": { "type": "string", "default": "0px" },
+		"marginRight": { "type": "string", "default": "0px" },
+		"marginBottom": { "type": "string", "default": "16px" },
+		"marginLeft": { "type": "string", "default": "0px" },
+		"paddingTop": { "type": "string", "default": "0px" },
+		"paddingRight": { "type": "string", "default": "0px" },
+		"paddingBottom": { "type": "string", "default": "0px" },
+		"paddingLeft": { "type": "string", "default": "0px" }
+	},
+	"example": {
+		"attributes": {
+			"content": "Your Heading Here",
+			"level": 2,
+			"textColor": "#1A1A2E"
+		}
+	}
+}

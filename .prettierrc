@@ -1,0 +1,19 @@
+{
+	"useTabs": true,
+	"tabWidth": 4,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"bracketSpacing": true,
+	"parenSpacing": true,
+	"arrowParens": "always",
+	"printWidth": 100,
+	"endOfLine": "lf",
+	"overrides": [
+		{
+			"files": "*.scss",
+			"options": {
+				"singleQuote": false
+			}
+		}
+	]
+}

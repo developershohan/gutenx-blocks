@@ -1,0 +1,102 @@
+/**
+ * Editor Controls Styles
+ *
+ * @package GutenX_Blocks
+ */
+
+/* ─── Inspector Tabs ─── */
+.gutenx-inspector-tabs {
+	.components-tab-panel__tabs {
+		display: flex;
+		justify-content: stretch;
+		border-bottom: 1px solid #ddd;
+		margin: 0 -16px;
+		padding: 0 16px;
+	}
+
+	.components-tab-panel__tabs-item {
+		flex: 1;
+		text-align: center;
+		padding: 10px 8px;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		border-bottom: 2px solid transparent;
+		transition: color 0.2s, border-color 0.2s;
+
+		&:hover {
+			color: #6C3FC5;
+		}
+
+		&.is-active {
+			color: #6C3FC5;
+			border-bottom-color: #6C3FC5;
+		}
+	}
+}
+
+.gutenx-inspector-tabs__content {
+	padding: 8px 0;
+}
+
+/* ─── Panel Styles ─── */
+.gutenx-control-label {
+	margin: 12px 0 4px;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: #757575;
+}
+
+.gutenx-spacing-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+
+	.components-range-control {
+		margin-bottom: 0;
+	}
+}
+
+/* ─── Background Type Selector ─── */
+.gutenx-bg-type-selector {
+	margin-bottom: 16px;
+
+	.components-button-group {
+		display: flex;
+		width: 100%;
+
+		.components-button {
+			flex: 1;
+			justify-content: center;
+		}
+	}
+}
+
+/* ─── Color Control Compact ─── */
+.gutenx-color-control,
+.gutenx-border-color,
+.gutenx-overlay-control {
+	.components-color-picker {
+		width: 100%;
+
+		.components-color-picker__saturation-pointer,
+		.components-color-picker__hue-pointer {
+			box-shadow: 0 0 0 2px #fff, 0 0 4px rgba(0, 0, 0, 0.3);
+		}
+	}
+}
+
+/* ─── Text Align Control ─── */
+.gutenx-text-align-control {
+	margin-top: 12px;
+
+	> p {
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: #757575;
+		margin-bottom: 8px;
+	}
+}

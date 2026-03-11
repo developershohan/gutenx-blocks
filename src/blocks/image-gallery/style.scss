@@ -1,0 +1,6 @@
+.wp-block-gutenx-blocks-image-gallery { box-sizing: border-box; }
+.gutenx-gallery__item { position: relative; overflow: hidden; }
+.gutenx-gallery__item img { transition: transform 0.3s ease; }
+.gutenx-gallery__item:hover img { transform: scale(1.05); }
+.gutenx-gallery__caption { padding: 8px 12px; font-size: 12px; color: #6B7280; text-align: center; background: rgba(0,0,0,.03); }
+.gutenx-gallery--masonry { align-items: start; }

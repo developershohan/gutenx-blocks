@@ -1,0 +1,209 @@
+/**
+ * Template Library Styles
+ *
+ * @package GutenX_Blocks
+ */
+
+/* ─── Modal Override ─── */
+.gutenx-template-modal {
+	.components-modal__content {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+	}
+
+	.components-modal__header {
+		border-bottom: 1px solid #E5E7EB;
+		padding: 16px 24px;
+	}
+}
+
+/* ─── Modal Header ─── */
+.gutenx-template-modal__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 16px 24px;
+	border-bottom: 1px solid #E5E7EB;
+	background: #FAFBFC;
+}
+
+.gutenx-template-modal__filters {
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+	}
+
+	.components-button {
+		border-radius: 20px !important;
+		font-size: 12px !important;
+		padding: 4px 14px !important;
+		font-weight: 500 !important;
+	}
+}
+
+.gutenx-template-modal__search {
+	width: 260px;
+
+	.components-search-control {
+		margin: 0;
+	}
+}
+
+/* ─── Template Grid ─── */
+.gutenx-template-modal__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	padding: 24px;
+	overflow-y: auto;
+	flex: 1;
+}
+
+.gutenx-template-modal__empty {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: 60px 0;
+	color: #9CA3AF;
+}
+
+/* ─── Template Card ─── */
+.gutenx-template-card {
+	background: #fff;
+	border: 1px solid #E5E7EB;
+	border-radius: 12px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+		transform: translateY(-2px);
+	}
+}
+
+.gutenx-template-card--pro {
+	opacity: 0.7;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			-45deg,
+			transparent,
+			transparent 8px,
+			rgba(0, 0, 0, 0.02) 8px,
+			rgba(0, 0, 0, 0.02) 16px
+		);
+		pointer-events: none;
+	}
+}
+
+.gutenx-template-card__preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 120px;
+	background: linear-gradient(135deg, #F3F4F6, #E5E7EB);
+	font-size: 40px;
+}
+
+.gutenx-template-card__info {
+	padding: 16px;
+	flex: 1;
+}
+
+.gutenx-template-card__name {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 0 6px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.gutenx-template-card__pro-badge {
+	background: linear-gradient(135deg, #6C3FC5, #FF6B35);
+	color: #fff;
+	font-size: 9px;
+	font-weight: 700;
+	padding: 2px 8px;
+	border-radius: 20px;
+	letter-spacing: 0.5px;
+}
+
+.gutenx-template-card__desc {
+	font-size: 13px;
+	color: #6B7280;
+	margin: 0 0 8px;
+	line-height: 1.5;
+}
+
+.gutenx-template-card__category {
+	display: inline-block;
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	color: #6C3FC5;
+	background: rgba(108, 63, 197, 0.08);
+	padding: 2px 8px;
+	border-radius: 4px;
+}
+
+.gutenx-template-card__actions {
+	padding: 12px 16px;
+	border-top: 1px solid #F3F4F6;
+}
+
+.gutenx-template-card__btn.components-button {
+	width: 100%;
+	justify-content: center;
+	border-radius: 8px !important;
+	font-size: 13px !important;
+	font-weight: 600 !important;
+}
+
+/* ─── Modal Footer ─── */
+.gutenx-template-modal__footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 24px;
+	border-top: 1px solid #E5E7EB;
+	background: #FAFBFC;
+}
+
+.gutenx-template-modal__count {
+	font-size: 12px;
+	color: #9CA3AF;
+	font-weight: 500;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 960px) {
+	.gutenx-template-modal__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.gutenx-template-modal__grid {
+		grid-template-columns: 1fr;
+	}
+
+	.gutenx-template-modal__header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.gutenx-template-modal__search {
+		width: 100%;
+	}
+}

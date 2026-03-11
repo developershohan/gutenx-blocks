@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3, "name": "gutenx-blocks/image-gallery", "version": "1.0.0", "title": "Image Gallery", "category": "gutenx-blocks", "icon": "format-gallery",
+	"description": "Responsive image gallery with Grid/Masonry layouts, lightbox, and caption support.",
+	"keywords": [ "gallery", "images", "photos", "masonry", "grid" ],
+	"supports": { "html": false, "className": true, "anchor": true },
+	"textdomain": "gutenx-blocks", "editorScript": "file:../../../build/blocks/image-gallery/index.js", "style": "file:../../../build/blocks/image-gallery/style-index.css",
+	"attributes": {
+		"images": { "type": "array", "default": [] },
+		"layout": { "type": "string", "default": "grid" },
+		"columns": { "type": "number", "default": 3 },
+		"gap": { "type": "string", "default": "12px" },
+		"aspectRatio": { "type": "string", "default": "1/1" },
+		"imageFit": { "type": "string", "default": "cover" },
+		"enableLightbox": { "type": "boolean", "default": true },
+		"caption": { "type": "boolean", "default": false },
+		"borderWidth": { "type": "string", "default": "0px" },
+		"borderStyle": { "type": "string", "default": "none" },
+		"borderColor": { "type": "string", "default": "#E5E7EB" },
+		"borderRadius": { "type": "string", "default": "8px" },
+		"borderLinkCorners": { "type": "boolean", "default": true },
+		"marginTop": { "type": "string", "default": "0px" },
+		"marginBottom": { "type": "string", "default": "0px" },
+		"paddingTop": { "type": "string", "default": "0px" },
+		"paddingBottom": { "type": "string", "default": "0px" }
+	},
+	"example": { "attributes": { "layout": "grid", "columns": 3 } }
+}

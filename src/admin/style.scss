@@ -1,0 +1,487 @@
+/**
+ * GutenX Blocks — Admin Dashboard Styles
+ *
+ * Custom SCSS using CSS custom properties.
+ * BEM naming convention throughout.
+ * Dark mode support via prefers-color-scheme.
+ *
+ * @package GutenX_Blocks
+ */
+
+/* ─── CSS Custom Properties ─── */
+:root {
+	--gutenx-brand: #6C3FC5;
+	--gutenx-brand-dark: #4A2A8A;
+	--gutenx-accent: #FF6B35;
+	--gutenx-success: #22C55E;
+	--gutenx-danger: #EF4444;
+	--gutenx-gray-50: #F9FAFB;
+	--gutenx-gray-100: #F3F4F6;
+	--gutenx-gray-200: #E5E7EB;
+	--gutenx-gray-300: #D1D5DB;
+	--gutenx-gray-500: #6B7280;
+	--gutenx-gray-700: #374151;
+	--gutenx-gray-800: #1F2937;
+	--gutenx-gray-900: #111827;
+	--gutenx-radius: 12px;
+	--gutenx-radius-sm: 8px;
+	--gutenx-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	--gutenx-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+	--gutenx-transition: 0.2s ease;
+	--gutenx-bg: #ffffff;
+	--gutenx-bg-card: #ffffff;
+	--gutenx-text: var(--gutenx-gray-900);
+	--gutenx-text-secondary: var(--gutenx-gray-500);
+	--gutenx-border: var(--gutenx-gray-200);
+}
+
+/* ─── Dark Mode ─── */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--gutenx-bg: #0F1117;
+		--gutenx-bg-card: #1A1D26;
+		--gutenx-text: #F1F5F9;
+		--gutenx-text-secondary: #94A3B8;
+		--gutenx-border: #2D3348;
+		--gutenx-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		--gutenx-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.4);
+	}
+}
+
+/* ─── Admin Wrapper ─── */
+.gutenx-admin {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 0 80px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+	color: var(--gutenx-text);
+}
+
+.gutenx-admin__content {
+	padding: 24px 0;
+}
+
+/* ─── Header ─── */
+.gutenx-header {
+	background: linear-gradient(135deg, var(--gutenx-brand), var(--gutenx-brand-dark));
+	border-radius: var(--gutenx-radius);
+	padding: 28px 32px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 8px;
+	box-shadow: var(--gutenx-shadow-lg);
+}
+
+.gutenx-header__brand {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.gutenx-header__icon {
+	font-size: 28px;
+	line-height: 1;
+}
+
+.gutenx-header__title {
+	color: #fff;
+	font-size: 22px;
+	font-weight: 700;
+	margin: 0;
+	letter-spacing: -0.3px;
+}
+
+.gutenx-header__version {
+	background: rgba(255, 255, 255, 0.2);
+	color: #fff;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 3px 10px;
+	border-radius: 20px;
+	letter-spacing: 0.3px;
+}
+
+.gutenx-header__actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.gutenx-header__tagline {
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 13px;
+	margin: 0;
+}
+
+.gutenx-header__docs-btn.components-button {
+	background: rgba(255, 255, 255, 0.15) !important;
+	color: #fff !important;
+	border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	border-radius: var(--gutenx-radius-sm) !important;
+	font-size: 13px !important;
+	transition: background var(--gutenx-transition) !important;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.25) !important;
+	}
+}
+
+/* ─── Notice Bar ─── */
+.gutenx-notice {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 20px;
+	border-radius: var(--gutenx-radius-sm);
+	margin: 16px 0;
+	font-size: 14px;
+	font-weight: 500;
+	animation: gutenx-slide-in 0.3s ease;
+}
+
+.gutenx-notice--success {
+	background: rgba(34, 197, 94, 0.1);
+	border: 1px solid rgba(34, 197, 94, 0.3);
+	color: var(--gutenx-success);
+}
+
+.gutenx-notice--error {
+	background: rgba(239, 68, 68, 0.1);
+	border: 1px solid rgba(239, 68, 68, 0.3);
+	color: var(--gutenx-danger);
+}
+
+.gutenx-notice__dismiss {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-size: 16px;
+	opacity: 0.6;
+	transition: opacity var(--gutenx-transition);
+	padding: 4px;
+	line-height: 1;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+@keyframes gutenx-slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ─── Dashboard Stats ─── */
+.gutenx-stats {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.gutenx-stats__card {
+	background: var(--gutenx-bg-card);
+	border: 1px solid var(--gutenx-border);
+	border-radius: var(--gutenx-radius);
+	padding: 20px 24px;
+	text-align: center;
+	box-shadow: var(--gutenx-shadow);
+	transition: box-shadow var(--gutenx-transition), transform var(--gutenx-transition);
+
+	&:hover {
+		box-shadow: var(--gutenx-shadow-lg);
+		transform: translateY(-2px);
+	}
+}
+
+.gutenx-stats__card--enabled {
+	border-left: 3px solid var(--gutenx-success);
+}
+
+.gutenx-stats__card--disabled {
+	border-left: 3px solid var(--gutenx-gray-300);
+}
+
+.gutenx-stats__number {
+	display: block;
+	font-size: 36px;
+	font-weight: 800;
+	color: var(--gutenx-brand);
+	line-height: 1;
+	margin-bottom: 6px;
+}
+
+.gutenx-stats__card--enabled .gutenx-stats__number {
+	color: var(--gutenx-success);
+}
+
+.gutenx-stats__card--disabled .gutenx-stats__number {
+	color: var(--gutenx-gray-500);
+}
+
+.gutenx-stats__label {
+	font-size: 13px;
+	color: var(--gutenx-text-secondary);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+/* ─── Block Grid ─── */
+.gutenx-grid__loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 0;
+	color: var(--gutenx-text-secondary);
+	gap: 12px;
+
+	.components-spinner {
+		width: 32px;
+		height: 32px;
+	}
+}
+
+.gutenx-grid__title {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--gutenx-text);
+	margin: 0 0 16px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--gutenx-border);
+}
+
+.gutenx-grid__title--pro {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.gutenx-grid__pro-badge {
+	background: linear-gradient(135deg, var(--gutenx-brand), var(--gutenx-accent));
+	color: #fff;
+	font-size: 10px;
+	font-weight: 700;
+	padding: 3px 10px;
+	border-radius: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.gutenx-grid__cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-bottom: 32px;
+}
+
+.gutenx-grid__pro-section {
+	margin-top: 16px;
+	opacity: 0.6;
+}
+
+/* ─── Block Card ─── */
+.gutenx-card {
+	background: var(--gutenx-bg-card);
+	border: 1px solid var(--gutenx-border);
+	border-radius: var(--gutenx-radius);
+	padding: 20px;
+	box-shadow: var(--gutenx-shadow);
+	transition: box-shadow var(--gutenx-transition), transform var(--gutenx-transition), border-color var(--gutenx-transition);
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	&:hover {
+		box-shadow: var(--gutenx-shadow-lg);
+		transform: translateY(-2px);
+	}
+}
+
+.gutenx-card--active {
+	border-color: rgba(108, 63, 197, 0.3);
+
+	&:hover {
+		border-color: rgba(108, 63, 197, 0.5);
+	}
+}
+
+.gutenx-card--inactive {
+	opacity: 0.75;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.gutenx-card__header {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.gutenx-card__icon {
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, rgba(108, 63, 197, 0.1), rgba(108, 63, 197, 0.05));
+	border-radius: 50%;
+	font-size: 18px;
+	flex-shrink: 0;
+
+	.gutenx-card--active & {
+		background: linear-gradient(135deg, rgba(108, 63, 197, 0.15), rgba(108, 63, 197, 0.08));
+	}
+}
+
+.gutenx-card__info {
+	flex: 1;
+	min-width: 0;
+}
+
+.gutenx-card__name {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0 0 4px;
+	color: var(--gutenx-text);
+}
+
+.gutenx-card__desc {
+	font-size: 12px;
+	color: var(--gutenx-text-secondary);
+	margin: 0;
+	line-height: 1.4;
+}
+
+.gutenx-card__footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 12px;
+	border-top: 1px solid var(--gutenx-border);
+}
+
+.gutenx-card__badge {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 3px 10px;
+	border-radius: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}
+
+.gutenx-card__badge--active {
+	background: rgba(34, 197, 94, 0.1);
+	color: var(--gutenx-success);
+}
+
+.gutenx-card__badge--inactive {
+	background: rgba(107, 114, 128, 0.1);
+	color: var(--gutenx-gray-500);
+}
+
+/* ─── Save Bar ─── */
+.gutenx-savebar {
+	position: sticky;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 24px;
+	background: rgba(255, 255, 255, 0.85);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-top: 1px solid var(--gutenx-border);
+	border-radius: 0 0 var(--gutenx-radius) var(--gutenx-radius);
+	box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+	z-index: 100;
+}
+
+.gutenx-savebar__label {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--gutenx-text);
+}
+
+.gutenx-savebar__btn.components-button {
+	background: var(--gutenx-brand) !important;
+	color: #fff !important;
+	border: none !important;
+	border-radius: var(--gutenx-radius-sm) !important;
+	padding: 8px 24px !important;
+	font-weight: 600 !important;
+	font-size: 13px !important;
+	transition: background var(--gutenx-transition), transform var(--gutenx-transition) !important;
+
+	&:hover {
+		background: var(--gutenx-brand-dark) !important;
+		transform: translateY(-1px);
+	}
+
+	&:disabled {
+		opacity: 0.6;
+		transform: none;
+	}
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 960px) {
+	.gutenx-grid__cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.gutenx-stats {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.gutenx-header {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 20px 24px;
+	}
+
+	.gutenx-header__actions {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.gutenx-grid__cards {
+		grid-template-columns: 1fr;
+	}
+
+	.gutenx-stats {
+		grid-template-columns: 1fr;
+	}
+
+	.gutenx-savebar {
+		flex-direction: column;
+		gap: 12px;
+		text-align: center;
+	}
+}
+
+/* ─── Dark Mode Save Bar ─── */
+@media (prefers-color-scheme: dark) {
+	.gutenx-savebar {
+		background: rgba(15, 17, 23, 0.9);
+		box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "gutenx/gutenx-blocks",
+	"description": "GutenX Blocks — Production-ready WordPress Gutenberg block library.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": "^8.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"GutenX_Blocks\\": "includes/"
+		}
+	},
+	"config": {
+		"vendor-dir": "vendor",
+		"optimize-autoloader": true,
+		"sort-packages": true
+	}
+}

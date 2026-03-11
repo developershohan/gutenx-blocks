@@ -1,0 +1,8 @@
+{
+	"core": "WordPress/WordPress#6.3",
+	"phpVersion": "8.0",
+	"plugins": [ "." ],
+	"mappings": {
+		".": "/var/www/html/wp-content/plugins/gutenx-blocks"
+	}
+}
