@@ -105,9 +105,7 @@ const actions = {
 					dispatch.setBlocks( response.blocks );
 				}
 			} catch ( err ) {
-				dispatch.setError(
-					err?.message || 'Failed to load settings.'
-				);
+				dispatch.setError( err?.message || 'Failed to load settings.' );
 			} finally {
 				dispatch.setLoading( false );
 			}
@@ -144,9 +142,7 @@ const actions = {
 					dispatch.setError( 'Failed to save. Please try again.' );
 				}
 			} catch ( err ) {
-				dispatch.setError(
-					err?.message || 'Failed to save. Please try again.'
-				);
+				dispatch.setError( err?.message || 'Failed to save. Please try again.' );
 			} finally {
 				dispatch.setSaving( false );
 			}
