@@ -1,0 +1,156 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gutenx-blocks/advanced-button",
+  "version": "1.0.0",
+  "title": "Advanced Button",
+  "category": "gutenx-blocks",
+  "icon": "button",
+  "description": "Customizable button block with size presets, hover effects, and full style controls.",
+  "keywords": [
+    "button",
+    "link",
+    "cta",
+    "call to action"
+  ],
+  "supports": {
+    "html": false,
+    "className": true,
+    "anchor": true
+  },
+  "textdomain": "gutenx-blocks",
+  "editorScript": "file:../../../build/blocks/advanced-button/index.js",
+  "style": "file:../../../build/blocks/advanced-button/style-index.css",
+  "attributes": {
+    "text": {
+      "type": "string",
+      "default": "Click Me"
+    },
+    "url": {
+      "type": "string",
+      "default": ""
+    },
+    "linkTarget": {
+      "type": "string",
+      "default": "_self"
+    },
+    "buttonSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "hoverBg": {
+      "type": "string",
+      "default": "#4A2A8A"
+    },
+    "hoverTextColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#6C3FC5"
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "color"
+    },
+    "backgroundGradient": {
+      "type": "string",
+      "default": ""
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "15px"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "lineHeight": {
+      "type": "string",
+      "default": "1.4"
+    },
+    "letterSpacing": {
+      "type": "string",
+      "default": "0px"
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "system-ui, sans-serif"
+    },
+    "customFontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "none"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "marginTop": {
+      "type": "string",
+      "default": "0px"
+    },
+    "marginRight": {
+      "type": "string",
+      "default": "0px"
+    },
+    "marginBottom": {
+      "type": "string",
+      "default": "0px"
+    },
+    "marginLeft": {
+      "type": "string",
+      "default": "0px"
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "12px"
+    },
+    "paddingRight": {
+      "type": "string",
+      "default": "24px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "12px"
+    },
+    "paddingLeft": {
+      "type": "string",
+      "default": "24px"
+    },
+    "borderWidth": {
+      "type": "string",
+      "default": "0px"
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "none"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#E5E7EB"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "8px"
+    },
+    "borderLinkCorners": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "text": "Click Me",
+      "buttonSize": "medium"
+    }
+  }
+}

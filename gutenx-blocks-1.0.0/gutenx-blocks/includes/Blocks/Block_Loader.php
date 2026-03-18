@@ -114,10 +114,7 @@ class Block_Loader {
 			wp_enqueue_script(
 				'gutenx-editor',
 				trailingslashit( GUTENX_URL ) . 'build/editor.js',
-				array_merge(
-					$editor_asset['dependencies'] ?? array(),
-					array( 'wp-edit-post' )
-				),
+				$editor_asset['dependencies'] ?? array(),
 				$editor_asset['version'] ?? GUTENX_VERSION,
 				true
 			);
@@ -125,19 +122,13 @@ class Block_Loader {
 			wp_set_script_translations( 'gutenx-editor', 'gutenx-blocks' );
 		}
 
-		// Enqueue required WordPress core styles for Editor UI components.
-		wp_enqueue_style( 'wp-components' );
-		wp_enqueue_style( 'wp-editor' );
-		wp_enqueue_style( 'wp-edit-post' );
-		wp_enqueue_style( 'wp-block-editor' );
-
 		// Enqueue shared editor styles.
 		$editor_css_path = trailingslashit( GUTENX_DIR ) . 'build/editor.css';
 		if ( file_exists( $editor_css_path ) ) {
 			wp_enqueue_style(
 				'gutenx-editor',
 				trailingslashit( GUTENX_URL ) . 'build/editor.css',
-				array( 'wp-edit-blocks', 'wp-components' ),
+				array( 'wp-edit-blocks' ),
 				$editor_asset['version'] ?? GUTENX_VERSION
 			);
 		}

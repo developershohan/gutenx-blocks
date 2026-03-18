@@ -1,0 +1,121 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gutenx-blocks/testimonial",
+  "version": "1.0.0",
+  "title": "Testimonial",
+  "category": "gutenx-blocks",
+  "icon": "format-quote",
+  "description": "Customer quote card with avatar, star rating, and multiple layout styles.",
+  "keywords": [
+    "testimonial",
+    "quote",
+    "review",
+    "feedback"
+  ],
+  "supports": {
+    "html": false,
+    "className": true,
+    "anchor": true
+  },
+  "textdomain": "gutenx-blocks",
+  "editorScript": "file:../../../build/blocks/testimonial/index.js",
+  "style": "file:../../../build/blocks/testimonial/style-index.css",
+  "attributes": {
+    "quote": {
+      "type": "string",
+      "default": "This product changed everything for us!"
+    },
+    "authorName": {
+      "type": "string",
+      "default": "Jane Smith"
+    },
+    "authorTitle": {
+      "type": "string",
+      "default": "CEO, Acme Corp"
+    },
+    "avatar": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "id": 0,
+        "alt": ""
+      }
+    },
+    "rating": {
+      "type": "number",
+      "default": 5
+    },
+    "layout": {
+      "type": "string",
+      "default": "card"
+    },
+    "quoteColor": {
+      "type": "string",
+      "default": "#1A1A2E"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "color"
+    },
+    "backgroundGradient": {
+      "type": "string",
+      "default": ""
+    },
+    "borderWidth": {
+      "type": "string",
+      "default": "1px"
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#E5E7EB"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "12px"
+    },
+    "borderLinkCorners": {
+      "type": "boolean",
+      "default": true
+    },
+    "marginTop": {
+      "type": "string",
+      "default": "0px"
+    },
+    "marginBottom": {
+      "type": "string",
+      "default": "0px"
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "24px"
+    },
+    "paddingRight": {
+      "type": "string",
+      "default": "24px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "24px"
+    },
+    "paddingLeft": {
+      "type": "string",
+      "default": "24px"
+    }
+  },
+  "example": {
+    "attributes": {
+      "quote": "This product changed everything for us!",
+      "authorName": "Jane Smith",
+      "rating": 5
+    }
+  }
+}

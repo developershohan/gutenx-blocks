@@ -20,18 +20,22 @@ const TemplateCard = ( { template, onInsert, isInserting } ) => {
 	return (
 		<div className={ `gutenx-template-card ${ template.isPro ? 'gutenx-template-card--pro' : '' }` }>
 			<div className="gutenx-template-card__preview">
-				<span className="gutenx-template-card__icon" role="img" aria-hidden="true">
-					{ template.icon }
-				</span>
+				{ template.preview_image ? (
+					<img src={ template.preview_image } alt={ template.title || template.name } style={ { width: '100%', height: 'auto', display: 'block' } } />
+				) : (
+					<span className="gutenx-template-card__icon" role="img" aria-hidden="true">
+						{ template.icon }
+					</span>
+				) }
 			</div>
 			<div className="gutenx-template-card__info">
 				<h3 className="gutenx-template-card__name">
-					{ template.name }
+					{ template.title || template.name }
 					{ template.isPro && (
 						<span className="gutenx-template-card__pro-badge">PRO</span>
 					) }
 				</h3>
-				<p className="gutenx-template-card__desc">{ template.description }</p>
+				{ template.description && <p className="gutenx-template-card__desc">{ template.description }</p> }
 				<span className="gutenx-template-card__category">{ template.category }</span>
 			</div>
 			<div className="gutenx-template-card__actions">

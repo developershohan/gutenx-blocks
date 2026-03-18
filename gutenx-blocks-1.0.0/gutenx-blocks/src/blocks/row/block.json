@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3, "name": "gutenx-blocks/row", "version": "1.0.0", "title": "Row", "category": "gutenx-blocks", "icon": "columns",
+	"description": "Horizontal row block with gap controls, alignment, and responsive mobile stacking.",
+	"keywords": [ "row", "columns", "grid", "layout" ],
+	"supports": { "html": false, "className": true, "anchor": true },
+	"textdomain": "gutenx-blocks",
+	"editorScript": "file:../../../build/blocks/row/index.js",
+	"style": "file:../../../build/blocks/row/style-index.css",
+	"attributes": {
+		"columns": { "type": "number", "default": 2 },
+		"columnGap": { "type": "string", "default": "24px" },
+		"rowGap": { "type": "string", "default": "0px" },
+		"verticalAlign": { "type": "string", "default": "top" },
+		"stackOnMobile": { "type": "boolean", "default": true },
+		"backgroundColor": { "type": "string", "default": "#ffffff" },
+		"backgroundType": { "type": "string", "default": "color" },
+		"backgroundGradient": { "type": "string", "default": "" },
+		"marginTop": { "type": "string", "default": "0px" },
+		"marginRight": { "type": "string", "default": "0px" },
+		"marginBottom": { "type": "string", "default": "0px" },
+		"marginLeft": { "type": "string", "default": "0px" },
+		"paddingTop": { "type": "string", "default": "0px" },
+		"paddingRight": { "type": "string", "default": "0px" },
+		"paddingBottom": { "type": "string", "default": "0px" },
+		"paddingLeft": { "type": "string", "default": "0px" }
+	},
+	"example": { "attributes": { "columns": 2, "columnGap": "24px" } }
+}

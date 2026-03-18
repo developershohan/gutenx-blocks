@@ -86,17 +86,13 @@ class Admin_Page {
 			true
 		);
 
-		// Enqueue WordPress core styles for components.
-		wp_enqueue_style( 'wp-components' );
-		wp_enqueue_style( 'wp-edit-post' );
-
 		// Enqueue admin styles.
 		$admin_css_path = trailingslashit( GUTENX_DIR ) . 'build/admin.css';
 		if ( file_exists( $admin_css_path ) ) {
 			wp_enqueue_style(
 				'gutenx-admin',
 				trailingslashit( GUTENX_URL ) . 'build/admin.css',
-				array( 'wp-components', 'wp-edit-post' ),
+				array( 'wp-components' ),
 				$admin_asset['version'] ?? GUTENX_VERSION
 			);
 		}

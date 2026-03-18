@@ -17,9 +17,9 @@ echo "🚀 Building ${PLUGIN_SLUG} v${VERSION}..."
 rm -rf "${BUILD_DIR}"
 rm -f "${ZIP_FILE}"
 
-# 2. Install production dependencies.
+# 2. Install dependencies.
 echo "📦 Installing dependencies..."
-npm ci --omit=dev --silent 2>/dev/null || npm install --omit=dev --silent
+npm ci --silent 2>/dev/null || npm install --silent
 
 # 3. Run production build.
 echo "⚙️  Running production build..."
@@ -39,15 +39,8 @@ cp -r vendor "${BUILD_DIR}/${PLUGIN_SLUG}/"
 # Copy build output.
 cp -r build "${BUILD_DIR}/${PLUGIN_SLUG}/"
 
-# Copy block source metadata (block.json files needed for registration).
-mkdir -p "${BUILD_DIR}/${PLUGIN_SLUG}/src/blocks"
-for block_dir in src/blocks/*/; do
-    block_name=$(basename "$block_dir")
-    mkdir -p "${BUILD_DIR}/${PLUGIN_SLUG}/src/blocks/${block_name}"
-    if [ -f "${block_dir}block.json" ]; then
-        cp "${block_dir}block.json" "${BUILD_DIR}/${PLUGIN_SLUG}/src/blocks/${block_name}/"
-    fi
-done
+# Copy src directory entirely to prevent any missing file issues in production.
+cp -r src "${BUILD_DIR}/${PLUGIN_SLUG}/"
 
 # Copy languages directory if it exists.
 if [ -d "languages" ]; then
@@ -57,7 +50,7 @@ fi
 # 5. Create .zip archive.
 echo "🗜️  Creating ZIP archive..."
 cd "${BUILD_DIR}"
-zip -r "../${ZIP_FILE}" "${PLUGIN_SLUG}/" -q
+npx bestzip "../${ZIP_FILE}" "${PLUGIN_SLUG}/"
 cd ..
 
 # 6. Cleanup.

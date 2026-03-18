@@ -9,7 +9,7 @@
 
 import { useState, useCallback } from '@wordpress/element';
 import { useDispatch } from '@wordpress/data';
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, parse } from '@wordpress/blocks';
 
 /**
  * Recursively convert template array format to WordPress blocks.
@@ -41,7 +41,9 @@ const useTemplateInsert = () => {
 			setIsInserting( true );
 
 			try {
-				const blocks = convertTemplateToBlocks( template.blocks );
+				const blocks = template.block_markup 
+					? parse( template.block_markup ) 
+					: convertTemplateToBlocks( template.blocks );
 				insertBlocks( blocks );
 			} catch ( error ) {
 				// eslint-disable-next-line no-console

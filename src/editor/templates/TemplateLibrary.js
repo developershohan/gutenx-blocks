@@ -6,23 +6,23 @@
  * @package GutenX_Blocks
  */
 
-import { useState } from '@wordpress/element';
-import { Modal, Button, ButtonGroup, SearchControl } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
+import { Modal, Button, ButtonGroup, SearchControl, Spinner } from '@wordpress/components';
+import { Icon, layout, close } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
-import templateData from './templateData';
 import TemplateCard from './TemplateCard';
 import useTemplateInsert from './useTemplateInsert';
 
 /**
- * Category filter list derived from template data.
+ * Helper to capitalize category labels.
+ *
+ * @param {string} slug Category slug.
+ * @return {string} Capitalized label.
  */
-const CATEGORIES = [
-	{ label: __( 'All', 'gutenx-blocks' ), value: 'all' },
-	{ label: __( 'Landing', 'gutenx-blocks' ), value: 'landing' },
-	{ label: __( 'Content', 'gutenx-blocks' ), value: 'content' },
-	{ label: __( 'Social Proof', 'gutenx-blocks' ), value: 'social-proof' },
-	{ label: __( 'Conversion', 'gutenx-blocks' ), value: 'conversion' },
-];
+const getCategoryLabel = ( slug ) => {
+	if ( ! slug ) return '';
+	return slug.charAt( 0 ).toUpperCase() + slug.slice( 1 ).replace( /-/g, ' ' );
+};
 
 /**
  * TemplateLibrary component.
@@ -33,9 +33,40 @@ const CATEGORIES = [
  * @return {JSX.Element|null} Template library modal or null.
  */
 const TemplateLibrary = ( { isOpen, onClose } ) => {
+	const [ activeTab, setActiveTab ] = useState( 'block' );
 	const [ activeCategory, setActiveCategory ] = useState( 'all' );
 	const [ searchQuery, setSearchQuery ] = useState( '' );
+	const [ templates, setTemplates ] = useState( [] );
+	const [ isLoading, setIsLoading ] = useState( true );
+	const [ error, setError ] = useState( null );
 	const { insertTemplate, isInserting } = useTemplateInsert();
+
+	useEffect( () => {
+		if ( isOpen ) {
+			setIsLoading( true );
+			setError( null );
+			fetch( 'http://api.local/wp-json/library/v1/export' )
+				.then( ( response ) => {
+					if ( ! response.ok ) {
+						throw new Error( 'Failed to fetch templates' );
+					}
+					return response.json();
+				} )
+				.then( ( data ) => {
+					setTemplates( data );
+					setIsLoading( false );
+				} )
+				.catch( ( err ) => {
+					setError( err.message );
+					setIsLoading( false );
+				} );
+		}
+	}, [ isOpen ] );
+
+	// Reset category when switching tabs.
+	useEffect( () => {
+		setActiveCategory( 'all' );
+	}, [ activeTab ] );
 
 	if ( ! isOpen ) {
 		return null;
@@ -46,69 +77,113 @@ const TemplateLibrary = ( { isOpen, onClose } ) => {
 		onClose();
 	};
 
+	// Get unique categories for the active tab.
+	const dynamicCategories = [
+		{ label: __( 'All', 'gutenx-blocks' ), value: 'all' },
+		...Array.from( new Set(
+			templates
+				.filter( t => t.type === activeTab && t.category )
+				.map( t => t.category )
+		) ).map( cat => ( {
+			label: getCategoryLabel( cat ),
+			value: cat
+		} ) )
+	];
+
 	// Filter templates by category and search.
-	const filteredTemplates = templateData.filter( ( template ) => {
+	const filteredTemplates = templates.filter( ( template ) => {
+		const matchesType = template.type === activeTab;
 		const matchesCategory = activeCategory === 'all' || template.category === activeCategory;
 		const matchesSearch = searchQuery === '' ||
-			template.name.toLowerCase().includes( searchQuery.toLowerCase() ) ||
-			template.description.toLowerCase().includes( searchQuery.toLowerCase() );
+			( template.title && template.title.toLowerCase().includes( searchQuery.toLowerCase() ) ) ||
+			( template.name && template.name.toLowerCase().includes( searchQuery.toLowerCase() ) );
 
-		return matchesCategory && matchesSearch;
+		return matchesType && matchesCategory && matchesSearch;
 	} );
 
 	return (
 		<Modal
-			title={ __( 'GutenX Template Library', 'gutenx-blocks' ) }
 			onRequestClose={ onClose }
 			className="gutenx-template-modal"
 			isFullScreen
 		>
-			<div className="gutenx-template-modal__header">
-				<div className="gutenx-template-modal__filters">
-					<ButtonGroup>
-						{ CATEGORIES.map( ( cat ) => (
-							<Button
-								key={ cat.value }
-								variant={ activeCategory === cat.value ? 'primary' : 'secondary' }
-								onClick={ () => setActiveCategory( cat.value ) }
-								size="small"
-							>
-								{ cat.label }
-							</Button>
-						) ) }
-					</ButtonGroup>
+			{/* Custom Top Bar */}
+			<div className="gutenx-template-modal__custom-header">
+				<div className="gutenx-template-modal__logo">
+					<Icon icon={ layout } />
+					<span>bBlocks</span>
 				</div>
-				<div className="gutenx-template-modal__search">
-					<SearchControl
-						value={ searchQuery }
-						onChange={ setSearchQuery }
-						placeholder={ __( 'Search templates…', 'gutenx-blocks' ) }
-					/>
+				<div className="gutenx-template-modal__tabs">
+					<button
+						className={ `gutenx-template-modal__tab ${ activeTab === 'block' ? 'is-active' : '' }` }
+						onClick={ () => setActiveTab( 'block' ) }
+					>
+						{ __( 'Patterns', 'gutenx-blocks' ) }
+					</button>
+					<button
+						className={ `gutenx-template-modal__tab ${ activeTab === 'page' ? 'is-active' : '' }` }
+						onClick={ () => setActiveTab( 'page' ) }
+					>
+						{ __( 'Pages', 'gutenx-blocks' ) }
+					</button>
+				</div>
+				<div className="gutenx-template-modal__close">
+					<Button icon={ close } onClick={ onClose } />
 				</div>
 			</div>
 
-			<div className="gutenx-template-modal__grid">
-				{ filteredTemplates.length === 0 ? (
-					<div className="gutenx-template-modal__empty">
-						<p>{ __( 'No templates found.', 'gutenx-blocks' ) }</p>
-					</div>
-				) : (
-					filteredTemplates.map( ( template ) => (
-						<TemplateCard
-							key={ template.id }
-							template={ template }
-							onInsert={ handleInsert }
-							isInserting={ isInserting }
+			{/* Main Content Area */}
+			<div className="gutenx-template-modal__body">
+				{/* Left Sidebar */}
+				<div className="gutenx-template-modal__sidebar">
+					<div className="gutenx-template-modal__search">
+						<SearchControl
+							value={ searchQuery }
+							onChange={ setSearchQuery }
+							placeholder={ __( 'Search', 'gutenx-blocks' ) }
 						/>
-					) )
-				) }
-			</div>
+					</div>
+					<ul className="gutenx-template-modal__categories">
+						{ dynamicCategories.map( ( cat ) => (
+							<li key={ cat.value }>
+								<button
+									className={ `gutenx-template-modal__category-btn ${ activeCategory === cat.value ? 'is-active' : '' }` }
+									onClick={ () => setActiveCategory( cat.value ) }
+								>
+									{ cat.label }
+								</button>
+							</li>
+						) ) }
+					</ul>
+				</div>
 
-			<div className="gutenx-template-modal__footer">
-				<span className="gutenx-template-modal__count">
-					{ `${ filteredTemplates.length } ${ __( 'templates', 'gutenx-blocks' ) }` }
-				</span>
-				{ /* PRO_HOOK: "Get 50+ Pro Templates" upsell button */ }
+				{/* Right Grid Content */}
+				<div className="gutenx-template-modal__content">
+					<div className="gutenx-template-modal__grid">
+						{ isLoading ? (
+							<div className="gutenx-template-modal__loading" style={ { display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '48px', gridColumn: '1 / -1' } }>
+								<Spinner />
+							</div>
+						) : error ? (
+							<div className="gutenx-template-modal__error" style={ { color: '#cc1818', textAlign: 'center', padding: '24px', gridColumn: '1 / -1' } }>
+								<p>{ __( 'Error loading templates:', 'gutenx-blocks' ) } { error }</p>
+							</div>
+						) : filteredTemplates.length === 0 ? (
+							<div className="gutenx-template-modal__empty">
+								<p>{ __( 'No templates found.', 'gutenx-blocks' ) }</p>
+							</div>
+						) : (
+							filteredTemplates.map( ( template ) => (
+								<TemplateCard
+									key={ template.id }
+									template={ template }
+									onInsert={ handleInsert }
+									isInserting={ isInserting }
+								/>
+							) )
+						) }
+					</div>
+				</div>
 			</div>
 		</Modal>
 	);

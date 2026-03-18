@@ -1,0 +1,113 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gutenx-blocks/icon-box",
+  "version": "1.0.0",
+  "title": "Icon Box",
+  "category": "gutenx-blocks",
+  "icon": "lightbulb",
+  "description": "Icon box with heading and description, multiple layout options and icon shape controls.",
+  "keywords": [
+    "icon",
+    "feature",
+    "box",
+    "service"
+  ],
+  "supports": {
+    "html": false,
+    "className": true,
+    "anchor": true
+  },
+  "textdomain": "gutenx-blocks",
+  "editorScript": "file:../../../build/blocks/icon-box/index.js",
+  "style": "file:../../../build/blocks/icon-box/style-index.css",
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": "star"
+    },
+    "iconSize": {
+      "type": "string",
+      "default": "48px"
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "#6C3FC5"
+    },
+    "iconBackground": {
+      "type": "string",
+      "default": "#EDE7F6"
+    },
+    "iconShape": {
+      "type": "string",
+      "default": "circle"
+    },
+    "title": {
+      "type": "string",
+      "default": "Feature Title"
+    },
+    "description": {
+      "type": "string",
+      "default": "Description text here."
+    },
+    "layout": {
+      "type": "string",
+      "default": "top"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "18px"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "lineHeight": {
+      "type": "string",
+      "default": "1.4"
+    },
+    "letterSpacing": {
+      "type": "string",
+      "default": "0px"
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "system-ui, sans-serif"
+    },
+    "customFontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "none"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "marginTop": {
+      "type": "string",
+      "default": "0px"
+    },
+    "marginBottom": {
+      "type": "string",
+      "default": "0px"
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "24px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "24px"
+    }
+  },
+  "example": {
+    "attributes": {
+      "icon": "star",
+      "title": "Feature Title",
+      "description": "Description text here."
+    }
+  }
+}
