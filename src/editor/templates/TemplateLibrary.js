@@ -45,7 +45,7 @@ const TemplateLibrary = ( { isOpen, onClose } ) => {
 		if ( isOpen ) {
 			setIsLoading( true );
 			setError( null );
-			fetch( 'http://api.local/wp-json/library/v1/export' )
+			fetch( 'https://api.proshohan.com/wp-json/library/v1/export' )
 				.then( ( response ) => {
 					if ( ! response.ok ) {
 						throw new Error( 'Failed to fetch templates' );
@@ -118,7 +118,7 @@ const TemplateLibrary = ( { isOpen, onClose } ) => {
 						className={ `gutenx-template-modal__tab ${ activeTab === 'block' ? 'is-active' : '' }` }
 						onClick={ () => setActiveTab( 'block' ) }
 					>
-						{ __( 'Patterns', 'gutenx-blocks' ) }
+						{ __( 'Blocks', 'gutenx-blocks' ) }
 					</button>
 					<button
 						className={ `gutenx-template-modal__tab ${ activeTab === 'page' ? 'is-active' : '' }` }
