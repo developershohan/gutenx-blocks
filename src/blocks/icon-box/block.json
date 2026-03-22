@@ -1,6 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3, "name": "gutenx-blocks/icon-box", "version": "1.0.0", "title": "Icon Box", "category": "gutenx-blocks", "icon": "lightbulb",
+	"apiVersion": 3,
+	"name": "gutenx-blocks/icon-box",
+	"version": "1.0.0",
+	"title": "Icon Box",
+	"category": "gutenx-blocks",
+	"icon": "lightbulb",
 	"description": "Icon box with heading and description, multiple layout options and icon shape controls.",
 	"keywords": [ "icon", "feature", "box", "service" ],
 	"supports": { "html": false, "className": true, "anchor": true },
@@ -25,9 +30,40 @@
 		"textTransform": { "type": "string", "default": "none" },
 		"textAlign": { "type": "string", "default": "center" },
 		"marginTop": { "type": "string", "default": "0px" },
+		"marginRight": { "type": "string", "default": "0px" },
 		"marginBottom": { "type": "string", "default": "0px" },
+		"marginLeft": { "type": "string", "default": "0px" },
+		"marginTopTablet": { "type": "string", "default": "0px" },
+		"marginRightTablet": { "type": "string", "default": "0px" },
+		"marginBottomTablet": { "type": "string", "default": "0px" },
+		"marginLeftTablet": { "type": "string", "default": "0px" },
+		"marginTopMobile": { "type": "string", "default": "0px" },
+		"marginRightMobile": { "type": "string", "default": "0px" },
+		"marginBottomMobile": { "type": "string", "default": "0px" },
+		"marginLeftMobile": { "type": "string", "default": "0px" },
 		"paddingTop": { "type": "string", "default": "24px" },
-		"paddingBottom": { "type": "string", "default": "24px" }
+		"paddingRight": { "type": "string", "default": "0px" },
+		"paddingBottom": { "type": "string", "default": "24px" },
+		"paddingLeft": { "type": "string", "default": "0px" },
+		"paddingTopTablet": { "type": "string", "default": "24px" },
+		"paddingRightTablet": { "type": "string", "default": "0px" },
+		"paddingBottomTablet": { "type": "string", "default": "24px" },
+		"paddingLeftTablet": { "type": "string", "default": "0px" },
+		"paddingTopMobile": { "type": "string", "default": "24px" },
+		"paddingRightMobile": { "type": "string", "default": "0px" },
+		"paddingBottomMobile": { "type": "string", "default": "24px" },
+		"paddingLeftMobile": { "type": "string", "default": "0px" },
+		"spacingDevice": { "type": "string", "default": "desktop" },
+		"spacingUnit": { "type": "string", "default": "px" },
+		"spacingCustomUnit": { "type": "string", "default": "px" },
+		"marginLink": { "type": "boolean", "default": true },
+		"paddingLink": { "type": "boolean", "default": true }
 	},
-	"example": { "attributes": { "icon": "star", "title": "Feature Title", "description": "Description text here." } }
+	"example": {
+		"attributes": {
+			"icon": "star",
+			"title": "Feature Title",
+			"description": "Description text here."
+		}
+	}
 }

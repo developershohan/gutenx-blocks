@@ -1,10 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3, "name": "gutenx-blocks/testimonial", "version": "1.0.0", "title": "Testimonial", "category": "gutenx-blocks", "icon": "format-quote",
+	"apiVersion": 3,
+	"name": "gutenx-blocks/testimonial",
+	"version": "1.0.0",
+	"title": "Testimonial",
+	"category": "gutenx-blocks",
+	"icon": "format-quote",
 	"description": "Customer quote card with avatar, star rating, and multiple layout styles.",
 	"keywords": [ "testimonial", "quote", "review", "feedback" ],
 	"supports": { "html": false, "className": true, "anchor": true },
-	"textdomain": "gutenx-blocks", "editorScript": "file:../../../build/blocks/testimonial/index.js", "style": "file:../../../build/blocks/testimonial/style-index.css",
+	"textdomain": "gutenx-blocks",
+	"editorScript": "file:../../../build/blocks/testimonial/index.js",
+	"style": "file:../../../build/blocks/testimonial/style-index.css",
 	"attributes": {
 		"quote": { "type": "string", "default": "This product changed everything for us!" },
 		"authorName": { "type": "string", "default": "Jane Smith" },
@@ -22,11 +29,40 @@
 		"borderRadius": { "type": "string", "default": "12px" },
 		"borderLinkCorners": { "type": "boolean", "default": true },
 		"marginTop": { "type": "string", "default": "0px" },
+		"marginRight": { "type": "string", "default": "0px" },
 		"marginBottom": { "type": "string", "default": "0px" },
+		"marginLeft": { "type": "string", "default": "0px" },
+		"marginTopTablet": { "type": "string", "default": "0px" },
+		"marginRightTablet": { "type": "string", "default": "0px" },
+		"marginBottomTablet": { "type": "string", "default": "0px" },
+		"marginLeftTablet": { "type": "string", "default": "0px" },
+		"marginTopMobile": { "type": "string", "default": "0px" },
+		"marginRightMobile": { "type": "string", "default": "0px" },
+		"marginBottomMobile": { "type": "string", "default": "0px" },
+		"marginLeftMobile": { "type": "string", "default": "0px" },
 		"paddingTop": { "type": "string", "default": "24px" },
 		"paddingRight": { "type": "string", "default": "24px" },
 		"paddingBottom": { "type": "string", "default": "24px" },
-		"paddingLeft": { "type": "string", "default": "24px" }
+		"paddingLeft": { "type": "string", "default": "24px" },
+		"paddingTopTablet": { "type": "string", "default": "24px" },
+		"paddingRightTablet": { "type": "string", "default": "24px" },
+		"paddingBottomTablet": { "type": "string", "default": "24px" },
+		"paddingLeftTablet": { "type": "string", "default": "24px" },
+		"paddingTopMobile": { "type": "string", "default": "24px" },
+		"paddingRightMobile": { "type": "string", "default": "24px" },
+		"paddingBottomMobile": { "type": "string", "default": "24px" },
+		"paddingLeftMobile": { "type": "string", "default": "24px" },
+		"spacingDevice": { "type": "string", "default": "desktop" },
+		"spacingUnit": { "type": "string", "default": "px" },
+		"spacingCustomUnit": { "type": "string", "default": "px" },
+		"marginLink": { "type": "boolean", "default": true },
+		"paddingLink": { "type": "boolean", "default": true }
 	},
-	"example": { "attributes": { "quote": "This product changed everything for us!", "authorName": "Jane Smith", "rating": 5 } }
+	"example": {
+		"attributes": {
+			"quote": "This product changed everything for us!",
+			"authorName": "Jane Smith",
+			"rating": 5
+		}
+	}
 }

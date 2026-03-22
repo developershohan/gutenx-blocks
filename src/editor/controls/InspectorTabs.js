@@ -2,6 +2,7 @@
  * InspectorTabs — Tabbed Inspector Controls Wrapper
  *
  * Provides General / Style / Advanced tabs in the InspectorControls sidebar.
+ * Persists the active tab across re-renders caused by device-type changes.
  *
  * @package GutenX_Blocks
  */
@@ -9,6 +10,16 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import { TabPanel } from '@wordpress/components';
+
+/**
+ * Module-level variable to remember the last active tab.
+ *
+ * When Gutenberg re-renders the sidebar (e.g. after a device-type
+ * change triggers a canvas resize), TabPanel remounts and resets
+ * to `initialTabName`. By storing the last selection here, we can
+ * restore the correct tab on remount.
+ */
+let lastActiveTab = 'general';
 
 /**
  * Tab definitions.
@@ -46,7 +57,10 @@ const InspectorTabs = ( { generalTab, styleTab, advancedTab } ) => {
 			<TabPanel
 				className="gutenx-inspector-tabs"
 				tabs={ TABS }
-				initialTabName="general"
+				initialTabName={ lastActiveTab }
+				onSelect={ ( tabName ) => {
+					lastActiveTab = tabName;
+				} }
 			>
 				{ ( tab ) => {
 					switch ( tab.name ) {
